@@ -1,0 +1,46 @@
+﻿@model FF.Models.Form
+@{
+    ViewBag.Title = "Robot Spiders";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    <h3>Input</h3>
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(model => model.WallSize, new { @class = "control-label col-md-2"})
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.WallSize)
+            @Html.ValidationMessageFor(model => model.WallSize)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.RobotStart, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.RobotStart)
+            @Html.ValidationMessageFor(model => model.RobotStart)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Instructions, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Instructions)
+            @Html.ValidationMessageFor(model => model.Instructions)
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Submit" class="btn btn-default" />
+        </div>
+    </div>
+    if (Model != null && Model.Output != null)
+    {
+        <h3>Output</h3>
+        <div class="col-md-12">
+            @Html.DisplayFor(model => model.Output)
+        </div>
+    }
+}
+
